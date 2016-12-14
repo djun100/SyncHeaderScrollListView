@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/list_item_color_bg"
+                android:descendantFocusability="blocksDescendants"
+    >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
+        android:text="附加费名称"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_toRightOf="@+id/textView1"
+        android:gravity="center"
+        android:text="币种"
+        android:textSize="14sp"
+        />
+
+    <com.example.demohlistview.InterceptScrollContainer
+        android:id="@+id/scroollContainter"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/textView2"
+        >
+
+        <com.example.demohlistview.ObservableHScrollView
+            android:id="@+id/horizontalScrollView1"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/ll_txtcontainer"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:focusable="false"
+                android:gravity="center"
+                android:orientation="horizontal">
+<!--
+                <TextView
+                    android:id="@+id/textView3"
+                    style="@style/ItemTitle"
+                    android:text="Column3"
+                    />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    style="@style/ItemTitle"
+                    android:text="Column4"
+                    />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    style="@style/ItemTitle"
+                    android:text="Column5"
+                    />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    style="@style/ItemTitle"
+                    android:text="Column6"
+                    />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    style="@style/ItemTitle"
+                    android:text="Column7"
+                    />-->
+            </LinearLayout>
+        </com.example.demohlistview.ObservableHScrollView>
+    </com.example.demohlistview.InterceptScrollContainer>
+
+</RelativeLayout>
