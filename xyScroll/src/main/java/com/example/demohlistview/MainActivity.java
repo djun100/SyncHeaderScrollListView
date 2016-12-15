@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 	MyAdapter myAdapter;
 	RelativeLayout mHead;
 	LinearLayout main;
-	ObservableHScrollView horizontalScrollView1;
+	ObservableHScrollView mHeaderScrollView1;
 	InterceptScrollContainer scroollContainter;
 
 	public void onCreate(Bundle savedInstanceState) {
@@ -36,16 +36,16 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		mHead = (RelativeLayout) findViewById(R.id.head);
-		horizontalScrollView1 = (ObservableHScrollView) findViewById(R.id.horizontalScrollView1);
+		mHeaderScrollView1 = (ObservableHScrollView) findViewById(R.id.horizontalScrollView1);
 		scroollContainter = (InterceptScrollContainer) findViewById(R.id.scroollContainter);
 		scroollContainter.setFocusable(true);
 		scroollContainter.setClickable(true);
 		scroollContainter.setOnTouchListener(new ListViewAndHeadViewTouchLinstener());
 		mHead.setBackgroundColor(Color.parseColor("#b2d235"));
 
-//		horizontalScrollView1.setFocusable(true);
-//		horizontalScrollView1.setClickable(true);
-//		horizontalScrollView1.setOnTouchListener(new ListViewAndHeadViewTouchLinstener());
+//		mHeaderScrollView1.setFocusable(true);
+//		mHeaderScrollView1.setClickable(true);
+//		mHeaderScrollView1.setOnTouchListener(new ListViewAndHeadViewTouchLinstener());
 //		mHead.setFocusable(true);
 //		mHead.setClickable(true);
 //		mHead.setOnTouchListener(new ListViewAndHeadViewTouchLinstener());
@@ -87,8 +87,10 @@ public class MainActivity extends Activity {
 			//当在列头 和 listView控件上touch时，将这个touch的事件分发给 ScrollView
 			//不要列头
 //			HorizontalScrollView headSrcrollView = (HorizontalScrollView) mHead
-//					.findViewById(R.id.horizontalScrollView1);  //MyHScrollView
-			horizontalScrollView1.onTouchEvent(arg1);  //强制执行
+//					.findViewById(R.id.mHeaderScrollView1);  //MyHScrollView
+			mHeaderScrollView1.onTouchEvent(arg1);  //强制执行
+			//add by cy 返回FALSE，listview滑动事件可以继续传递，正常响应，且可以把事件传给别处；
+			// 返回TRUE，listview将无法获取该touch事件，无响应
 			return false;
 		}
 	}
@@ -189,8 +191,8 @@ public class MainActivity extends Activity {
 					holder.container = (InterceptScrollContainer) convertView.findViewById(R.id.scroollContainter) ;
 
 //					MyHScrollView headSrcrollView = (MyHScrollView) mHead
-//							.findViewById(R.id.horizontalScrollView1);
-					horizontalScrollView1
+//							.findViewById(R.id.mHeaderScrollView1);
+					mHeaderScrollView1
 							.AddOnScrollChangedListener(new OnScrollChangedListenerImp(
 									scrollView1));
 
