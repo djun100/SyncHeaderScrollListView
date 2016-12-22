@@ -51,6 +51,7 @@ public class MainActivity extends Activity {
 //		mHead.setOnTouchListener(new ListViewAndHeadViewTouchLinstener());
 		initHead();
 		mListView1 = (ListView) findViewById(R.id.listView1);
+		//http://blog.csdn.net/fancylovejava/article/details/51692656 listview设置touchListener返回true listview就无法响应
 		mListView1.setOnTouchListener(new ListViewAndHeadViewTouchLinstener());
 
 		myAdapter = new MyAdapter(this, R.layout.item);
@@ -192,9 +193,7 @@ public class MainActivity extends Activity {
 
 //					MyHScrollView headSrcrollView = (MyHScrollView) mHead
 //							.findViewById(R.id.mHeaderScrollView1);
-					mHeaderScrollView1
-							.AddOnScrollChangedListener(new OnScrollChangedListenerImp(
-									scrollView1));
+					mHeaderScrollView1.AddOnScrollChangedListener(new OnScrollChangedListenerImp(scrollView1));
 
 					convertView.setTag(holder);
 					mHolderList.add(holder);
